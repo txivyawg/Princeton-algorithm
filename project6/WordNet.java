@@ -1,13 +1,12 @@
 import java.util.HashMap;
-
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.Digraph;
 import edu.princeton.cs.algs4.DirectedCycle;
 import edu.princeton.cs.algs4.In;
 
 public class WordNet {
-    HashMap<Integer,String> id2noun;
-    HashMap<String, Bag<Integer>> noun2id;
+    private HashMap<Integer,String> id2noun;
+    private HashMap<String, Bag<Integer>> noun2id;
     private Digraph relationDigraph;
     private SAP sap;
 
@@ -72,7 +71,7 @@ public class WordNet {
 
     // distance between nounA and nounB (defined below)
     public int distance(String nounA, String nounB) {
-        if (nounA == null || nounB == null) throw new NullPointerException();
+        if (nounA == null || nounB == null) throw new IllegalArgumentException ();
         if (!isNoun(nounA) || !isNoun(nounB)) throw new IllegalArgumentException();
 
         Bag<Integer> synsetA = noun2id.get(nounA);
@@ -93,6 +92,5 @@ public class WordNet {
     }
 
     // do unit testing of this class
-    //public static void main(String[] args)
 
 }

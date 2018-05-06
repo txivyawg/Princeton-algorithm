@@ -33,7 +33,7 @@ public class DeluxeDFS {
         disTo[s] = 0;
         queue.enqueue(s);
 
-        queue = helper(queue, G);
+        helper(queue, G);
     }
 
     private void bfs(Digraph G, Iterable<Integer> sources) {
@@ -44,21 +44,21 @@ public class DeluxeDFS {
             queue.enqueue(s);
         }
 
-        queue = helper(queue, G);
+        helper(queue, G);
     }
 
-    private Queue<Integer> helper(Queue<Integer> queue, Digraph G) {
+    private void helper(Queue<Integer> queue, Digraph G) {
         while (!queue.isEmpty()) {
             int v = queue.dequeue();
             for (int w : G.adj(v)) {
-                if (!marked[w]) {
+                if (!marked[w] || disTo[w] > disTo[v] + 1) {
+                    marked[w] = true;
                     edgeTo[w] = v;
-                    disTo[w] = disTo[v] +1;
+                    disTo[w] = disTo[v] + 1;
                     queue.enqueue(w);
                 }
             }
         }
-        return  queue;
     }
 
     public boolean hasPathTo(int v) {
@@ -80,7 +80,8 @@ public class DeluxeDFS {
     }
 
     public boolean[] getMarked() {
-        return this.marked;
+        boolean[] marked = this.marked;
+        return marked;
     }
 
 }

@@ -17,7 +17,7 @@ public class SAP {
     // length of shortest ancestral path between v and w; -1 if no such path
     public int length(int v, int w) {
         if(isInValid(v) || isInValid(w))
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException ();
 
         int ancestor = ancestor(v, w);
         if(ancestor == -1)
@@ -32,7 +32,7 @@ public class SAP {
     // a common ancestor of v and w that participates in a shortest ancestral path; -1 if no such path
     public int ancestor(int v, int w) {
         if(isInValid(v) || isInValid(w))
-            throw new IndexOutOfBoundsException();
+            throw new IllegalArgumentException ();
 
         DeluxeDFS bfsv = new DeluxeDFS(G, v);
         DeluxeDFS bfsw = new DeluxeDFS(G, w);
@@ -61,11 +61,11 @@ public class SAP {
             throw new NullPointerException();
         for(Integer id: v){
             if(isInValid(id))
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException ();
         }
         for(Integer id: w){
             if(isInValid(id))
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException ();
         }
 
         int ancestor = ancestor(v, w);
@@ -85,11 +85,11 @@ public class SAP {
             throw new NullPointerException();
         for(Integer id: v){
             if(isInValid(id))
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException ();
         }
         for(Integer id: w){
             if(isInValid(id))
-                throw new IndexOutOfBoundsException();
+                throw new IllegalArgumentException ();
         }
 
         DeluxeDFS bfsv = new DeluxeDFS(G, v);
